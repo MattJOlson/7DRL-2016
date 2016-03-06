@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="ComponentTests.cs" />
     <Compile Include="EntityComponentsTests.cs" />
+    <Compile Include="PrefabTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
