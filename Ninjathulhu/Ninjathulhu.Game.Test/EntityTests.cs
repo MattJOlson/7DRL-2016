@@ -34,18 +34,20 @@ namespace Ninjathulhu.Game.Test
         [Test]
         public void attaching_a_component_to_an_EntityComponents_is_idempotent()
         {
-            var first = _entity.Components.Attach<SomeComponent>();
+            var first = _entity.Components.Attach<SomeComponent>() as SomeComponent;
             var second = _entity.Components.Attach<SomeComponent>();
 
             second.Should().Be(first);
+            first.PeekEntity().Should().Be(_entity);
         }
 
         [Test]
         public void get_works()
         {
-            var component = _entity.Components.Attach<SomeComponent>();
+            var component = _entity.Components.Attach<SomeComponent>() as SomeComponent;
 
             _entity.Components.Get<SomeComponent>().Should().Be(component);
+            component.PeekEntity().Should().Be(_entity);
         }
 
         [Test]
@@ -61,10 +63,11 @@ namespace Ninjathulhu.Game.Test
         public void removing_a_registered_component_works()
         {
             var entity = new Entity();
-            entity.Components.Attach<SomeComponent>();
+            var component = entity.Components.Attach<SomeComponent>() as SomeComponent;
             entity.Components.Remove<SomeComponent>();
 
             entity.Components.Get<SomeComponent>().Should().BeNull();
+            component.PeekEntity().Should().BeNull();
         }
 
         [Test]
