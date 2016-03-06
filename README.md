@@ -1,2 +1,11 @@
-# 7DRL-2016
-Repo for the 2016 seven-day Roguelike challenge
+# Ninjathulhu
+
+An entry for the 2016 Seven-Day Roguelike Challenge.
+
+## Organization
+
+### Ninjathulhu
+Top-level project. Might disappear.
+
+### Ninjathulhu.Game
+Game logic layer code.
