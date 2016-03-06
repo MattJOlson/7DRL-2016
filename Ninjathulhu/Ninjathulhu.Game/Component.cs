@@ -1,31 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Ninjathulhu.Game
 {
-    class ComponentProperties
+    public class ComponentProperties
     {
         public Dictionary<string, object> Values;
     }
 
-    class Component
+    public class Component
     {
         protected Entity Entity;
 
         public bool Enabled;
 
-        ComponentProperties Properties;
+        protected ComponentProperties Properties;
 
         public virtual void Start() {}
 
-        public virtual void Update(float elapsed) {}
+        public virtual void Tick() {}
 
-        public Component Get<TComponent>()
+        public Component GetSibling<TComponent>()
             where TComponent : Component
         {
-            return Entity != null ? Entity.Components.Get<TComponent>() : null;
+            return Entity?.Components.Get<TComponent>();
         }
 
         public bool IsSibling(Component other)
