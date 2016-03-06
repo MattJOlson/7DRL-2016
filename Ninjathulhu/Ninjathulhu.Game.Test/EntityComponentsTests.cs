@@ -79,5 +79,13 @@ namespace Ninjathulhu.Game.Test
 
             act.ShouldNotThrow();
         }
+
+        [Test]
+        public void trying_to_attach_a_non_Component_to_an_entity_should_throw()
+        {
+            Action act = () => _entity.Components.Attach(typeof (int));
+
+            act.ShouldThrow<NullReferenceException>();
+        }
     }
 }

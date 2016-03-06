@@ -40,8 +40,7 @@ namespace Ninjathulhu.Game
                 return _components[type];
             }
 
-            var newComponent = Activator.CreateInstance(type) as Component;
-            if (newComponent == null) { return null; }
+            var newComponent = type.MaybeComponent();
             _components[type] = newComponent;
             newComponent.AttachTo(_entity);
             return newComponent;
@@ -83,6 +82,14 @@ namespace Ninjathulhu.Game
         {
             Components = new EntityComponents(this);
             Properties = new EntityProperties();
+        }
+    }
+
+    internal static class TypeExtensions
+    {
+        public static Component MaybeComponent(this Type type)
+        {
+            return Activator.CreateInstance(type) as Component;
         }
     }
 }

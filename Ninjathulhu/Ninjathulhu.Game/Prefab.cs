@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Ninjathulhu.Game
 {
-    class Prefab
+    public class Prefab
     {
         public string ID
         {
@@ -11,7 +11,7 @@ namespace Ninjathulhu.Game
             private set;
         }
 
-        public List<Type> Components;
+        public HashSet<Type> Components;
 
         public Dictionary<Type, ComponentProperties> Properties;
 
@@ -20,21 +20,18 @@ namespace Ninjathulhu.Game
             ID = id;
         }
 
-        static public Dictionary<string, Prefab> Definitions;
-
-        static public void Define(string id, List<Type> components, Dictionary<Type, ComponentProperties> properties)
+        public static Prefab Define(string id, HashSet<Type> components, Dictionary<Type, ComponentProperties> properties)
         {
-            Prefab prefab = new Prefab(id);
+            var prefab = new Prefab(id);
             prefab.Components = components;
             prefab.Properties = properties;
 
-            Definitions[id] = prefab;
+            return prefab;
         }
 
-        static public Entity Spawn(string id, Dictionary<Type, ComponentProperties> spawnProperties)
+        public static Entity Spawn(Prefab prefab, Dictionary<Type, ComponentProperties> spawnProperties)
         {
-            Prefab prefab = Definitions[id];
-            Entity entity = new Entity();
+            var entity = new Entity();
 
             var newComponents = new List<Component>();
 
