@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Ninjathulhu.Game
 {
@@ -33,19 +34,9 @@ namespace Ninjathulhu.Game
         {
             var entity = new Entity();
 
-            var newComponents = new List<Component>();
+            var newComponents = prefab.Components.Select(t => entity.Components.Attach(t));
 
-            foreach (var type in prefab.Components)
-            {
-                Component component = entity.Components.Attach(type);
-                if (component == null) { continue; }
-                newComponents.Add(component);
-            }
-
-            foreach (var component in newComponents)
-            {
-                component.Start();
-            }
+            foreach (var component in newComponents) component.Start();
 
             return entity;
         }
