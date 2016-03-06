@@ -4,14 +4,14 @@ namespace Ninjathulhu.Game
 {
     public class MapCell
     {
-        enum CellType
+        public enum CellType
         {
             EMPTY,
             FLOOR,
             WALL,
         }
 
-        CellType Type = CellType.EMPTY;
+        public CellType Type = CellType.EMPTY;
     }
 
     public class Map
@@ -49,6 +49,10 @@ namespace Ninjathulhu.Game
             Height = height;
 
             Cells = new MapCell[Width * Height];
+            for (int i = 0; i < Width * Height; i++)
+            {
+                Cells[i] = new MapCell();
+            }
         }
     }
 }
