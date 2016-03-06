@@ -35,7 +35,7 @@ namespace Ninjathulhu.Game
 
             var newComponent = new TComponent();
             Components[typeof(TComponent)] = newComponent;
-            newComponent.HandleAttachToEntity(Entity);
+            newComponent.AttachTo(Entity);
             return newComponent;
         }
 
@@ -49,7 +49,7 @@ namespace Ninjathulhu.Game
             Component newComponent = Activator.CreateInstance(type) as Component;
             if (newComponent == null) { return null; }
             Components[type] = newComponent;
-            newComponent.HandleAttachToEntity(Entity);
+            newComponent.AttachTo(Entity);
             return newComponent;
         }
 
@@ -57,14 +57,14 @@ namespace Ninjathulhu.Game
             where TComponent : Component
         {
             Component component = Components[typeof(TComponent)];
-            component.HandleRemoveFromEntity(Entity);
+            component.RemoveFrom(Entity);
             return Components.Remove(typeof(TComponent));
         }
 
         public bool Remove(Type componentType)
         {
             Component component = Components[componentType];
-            component.HandleRemoveFromEntity(Entity);
+            component.RemoveFrom(Entity);
             return Components.Remove(componentType);
         }
     }

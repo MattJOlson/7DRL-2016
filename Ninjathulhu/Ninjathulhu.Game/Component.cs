@@ -33,12 +33,12 @@ namespace Ninjathulhu.Game
             return Entity != null && Entity == other.Entity;
         }
 
-        public virtual void HandleAttachToEntity(Entity entity)
+        public virtual void AttachTo(Entity entity)
         {
             Entity = entity;
         }
 
-        public virtual void HandleRemoveFromEntity(Entity entity)
+        public virtual void RemoveFrom(Entity entity)
         {
             Entity = null;
         }
