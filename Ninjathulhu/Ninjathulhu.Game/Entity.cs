@@ -5,67 +5,62 @@ namespace Ninjathulhu.Game
 {
     public class EntityComponents
     {
-        private Entity Entity;
+        private readonly Entity _entity;
 
-        private Dictionary<Type, Component> Components = new Dictionary<Type, Component>();
+        private readonly Dictionary<Type, Component> _components = new Dictionary<Type, Component>();
 
         public EntityComponents(Entity entity)
         {
-            Entity = entity;
+            _entity = entity;
         }
 
         public Component Get<TComponent>()
             where TComponent : Component
         {
-            return Components[typeof(TComponent)];
+            return Get(typeof (TComponent));
         }
 
         public Component Get(Type componentType)
         {
-            return Components[componentType];
+            if(_components.ContainsKey(componentType))
+                return _components[componentType];
+            return null;
         }
 
         public Component Attach<TComponent>()
             where TComponent : Component, new()
         {
-            if (Components.ContainsKey(typeof(TComponent)))
-            {
-                return Components[typeof(TComponent)];
-            }
-
-            var newComponent = new TComponent();
-            Components[typeof(TComponent)] = newComponent;
-            newComponent.AttachTo(Entity);
-            return newComponent;
+            return Attach(typeof (TComponent));
         }
 
         public Component Attach(Type type)
         {
-            if (Components.ContainsKey(type))
+            if (_components.ContainsKey(type))
             {
-                return Components[type];
+                return _components[type];
             }
 
-            Component newComponent = Activator.CreateInstance(type) as Component;
+            var newComponent = Activator.CreateInstance(type) as Component;
             if (newComponent == null) { return null; }
-            Components[type] = newComponent;
-            newComponent.AttachTo(Entity);
+            _components[type] = newComponent;
+            newComponent.AttachTo(_entity);
             return newComponent;
         }
 
         public bool Remove<TComponent>()
             where TComponent : Component
         {
-            Component component = Components[typeof(TComponent)];
-            component.RemoveFrom(Entity);
-            return Components.Remove(typeof(TComponent));
+            return Remove(typeof (TComponent));
         }
 
         public bool Remove(Type componentType)
         {
-            Component component = Components[componentType];
-            component.RemoveFrom(Entity);
-            return Components.Remove(componentType);
+            if (!_components.ContainsKey(componentType))
+                return true;
+
+            var component = _components[componentType];
+            component.RemoveFrom(_entity);
+            return _components.Remove(componentType);
         }
     }
 
