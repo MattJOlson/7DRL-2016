@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace rogue.src.sim
+namespace Ninjathulhu.Game
 {
     class ComponentProperties
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace rogue.src.sim
+namespace Ninjathulhu.Game
 {
     class Prefab
     {
