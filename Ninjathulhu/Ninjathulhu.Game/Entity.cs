@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Ninjathulhu.Game
 {
-    class EntityComponents
+    public class EntityComponents
     {
         private Entity Entity;
 
@@ -69,14 +69,14 @@ namespace Ninjathulhu.Game
         }
     }
 
-    class EntityProperties
+    public class EntityProperties
     {
         public Dictionary<Type, ComponentProperties> FromPrefab = new Dictionary<Type, ComponentProperties>();
 
         public Dictionary<Type, ComponentProperties> FromSpawn = new Dictionary<Type, ComponentProperties>();
     }
 
-    class Entity
+    public class Entity
     {
         public Entity Parent;
 

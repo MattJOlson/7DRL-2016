@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Ninjathulhu.Game
 {
-    class ComponentProperties
+    public class ComponentProperties
     {
         public Dictionary<string, object> Values;
     }
 
-    class Component
+    public class Component
     {
         protected Entity Entity;
 
@@ -20,7 +17,7 @@ namespace Ninjathulhu.Game
 
         public virtual void Start() {}
 
-        public virtual void Update(float elapsed) {}
+        public virtual void Update() {}
 
         public Component Get<TComponent>()
             where TComponent : Component
