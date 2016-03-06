@@ -16,7 +16,7 @@ namespace Ninjathulhu.Game
 
     public class Map
     {
-        public const int DefaultHeight = 40;
+        public const int DefaultHeight = 20;
         public const int DefaultWidth = 80;
 
         public int Height
