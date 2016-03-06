@@ -13,16 +13,16 @@ namespace Ninjathulhu.Game
 
         public bool Enabled;
 
-        ComponentProperties Properties;
+        protected ComponentProperties Properties;
 
         public virtual void Start() {}
 
-        public virtual void Update() {}
+        public virtual void Tick() {}
 
-        public Component Get<TComponent>()
+        public Component GetSibling<TComponent>()
             where TComponent : Component
         {
-            return Entity != null ? Entity.Components.Get<TComponent>() : null;
+            return Entity?.Components.Get<TComponent>();
         }
 
         public bool IsSibling(Component other)

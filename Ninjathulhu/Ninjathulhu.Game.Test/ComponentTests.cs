@@ -50,5 +50,25 @@ namespace Ninjathulhu.Game.Test
 
             (foo.IsSibling(bar) && bar.IsSibling(foo)).Should().BeTrue();
         }
+
+        [Test]
+        public void getting_a_sibling_that_does_not_exist_returns_null()
+        {
+            var entity = new Entity();
+            var foo = entity.Components.Attach<SomeComponent>();
+
+            foo.AttachTo(entity);
+            foo.GetSibling<Component>().Should().BeNull();
+        }
+
+        [Test]
+        public void getting_a_sibling_works()
+        {
+            var entity = new Entity();
+            var foo = entity.Components.Attach<SomeComponent>();
+            var bar = entity.Components.Attach<Component>();
+
+            foo.GetSibling<Component>().Should().Be(bar);
+        }
     }
 }
