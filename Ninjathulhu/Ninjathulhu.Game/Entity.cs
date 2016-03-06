@@ -20,6 +20,11 @@ namespace rogue.src.sim
             return Components[typeof(TComponent)];
         }
 
+        public Component Get(Type componentType)
+        {
+            return Components[componentType];
+        }
+
         public Component Attach<TComponent>()
             where TComponent : Component, new()
         {
@@ -54,6 +59,13 @@ namespace rogue.src.sim
             Component component = Components[typeof(TComponent)];
             component.HandleRemoveFromEntity(Entity);
             return Components.Remove(typeof(TComponent));
+        }
+
+        public bool Remove(Type componentType)
+        {
+            Component component = Components[componentType];
+            component.HandleRemoveFromEntity(Entity);
+            return Components.Remove(componentType);
         }
     }
 
