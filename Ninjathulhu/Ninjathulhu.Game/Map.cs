@@ -12,6 +12,11 @@ namespace Ninjathulhu.Game
         }
 
         public CellType Type = CellType.EMPTY;
+
+        public bool CanBeOccupied()
+        {
+            return Type == CellType.FLOOR;
+        }
     }
 
     public class Map
