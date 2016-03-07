@@ -20,7 +20,7 @@ namespace Ninjathulhu.Game
             ID = id;
         }
 
-        static public Dictionary<string, Prefab> Definitions;
+        static public Dictionary<string, Prefab> Definitions = new Dictionary<string, Prefab>();
 
         static public void Define(string id, List<Type> components, Dictionary<Type, ComponentProperties> properties)
         {
@@ -35,6 +35,7 @@ namespace Ninjathulhu.Game
         {
             Prefab prefab = Definitions[id];
             Entity entity = new Entity();
+            entity.Properties.FromSpawn = spawnProperties;
 
             var newComponents = new List<Component>();
 
