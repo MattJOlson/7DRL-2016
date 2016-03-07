@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿using MattUtils.Demands;
 using Ninjathulhu.Game.Common;
 
 namespace Ninjathulhu.Game.Player
@@ -13,10 +12,7 @@ namespace Ninjathulhu.Game.Player
         public override void Start()
         {
             Position = GetSibling<Position>();
-            if (Position == null)
-            {
-                throw new Exception("player movement controller lacks position component");
-            }
+            Demand.That(Position != null).Because("Player movement controller requires position component");
         }
 
         public int MaxMoveLength = 1;
