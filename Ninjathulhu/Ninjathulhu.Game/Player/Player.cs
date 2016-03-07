@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿using MattUtils.Demands;
 using Ninjathulhu.Game.Common;
 
 namespace Ninjathulhu.Game.Player
@@ -13,22 +12,13 @@ namespace Ninjathulhu.Game.Player
         public override void Start()
         {
             Position = GetSibling<Position>();
-            if (Position == null)
-            {
-                throw new Exception("player lacks position component");
-            }
+            Demand.That(Position != null).Because("Player requires position component");
 
             Movement = GetSibling<Movement>();
-            if (Movement == null)
-            {
-                throw new Exception("player lacks movement component");
-            }
+            Demand.That(Movement != null).Because("Player requires movement component");
 
             CombatStats = GetSibling<CombatStats>();
-            if (CombatStats == null)
-            {
-                throw new Exception("player lacks combat stats component");
-            }
+            Demand.That(CombatStats != null).Because("Player requires combat stats component");
         }
     }
 }
