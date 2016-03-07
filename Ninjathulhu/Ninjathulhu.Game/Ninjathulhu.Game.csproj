@@ -50,6 +50,8 @@
     <Compile Include="Common\WanderMovement.cs" />
     <Compile Include="Component.cs" />
     <Compile Include="Entity.cs" />
+    <Compile Include="EntityComponents.cs" />
+    <Compile Include="EntityProperties.cs" />
     <Compile Include="Monster\Cultist.cs" />
     <Compile Include="Monster\Monster.cs" />
     <Compile Include="Player\Movement.cs" />
