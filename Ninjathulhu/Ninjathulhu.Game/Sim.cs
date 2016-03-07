@@ -21,7 +21,7 @@ namespace Ninjathulhu.Game
             // TODO: loading the current map should generate spawn calls
             Prefab.Spawn(
                 PlayerPrefab,
-                new Dictionary<Type, ComponentProperties>()
+                new ComponentSet(new Dictionary<Type, ComponentProperties>()
                 {
                     { typeof(Common.Position),
                         new ComponentProperties(new Dictionary<string, object>()
@@ -29,10 +29,10 @@ namespace Ninjathulhu.Game
                             { Common.Position.PositionXPropertyName, 10 },
                             { Common.Position.PositionYPropertyName, 12 },
                         }) },
-                });
+                }));
             Prefab.Spawn(
                 CultistPrefab,
-                new Dictionary<Type, ComponentProperties>()
+                new ComponentSet(new Dictionary<Type, ComponentProperties>()
                 {
                     { typeof(Common.Position),
                         new ComponentProperties(new Dictionary<string, object>()
@@ -40,14 +40,14 @@ namespace Ninjathulhu.Game
                             { Common.Position.PositionXPropertyName, 15 },
                             { Common.Position.PositionYPropertyName, 20 },
                         }) },
-                });
+                }));
         }
 
         private void DefinePrefabs()
         {
             PlayerPrefab = Prefab.Define(
                 "player",
-                new Dictionary<Type, ComponentProperties>()
+                new ComponentSet(new Dictionary<Type, ComponentProperties>()
                 {
                     { typeof(Common.CombatStats),
                         new ComponentProperties(new Dictionary<string, object>()
@@ -58,11 +58,11 @@ namespace Ninjathulhu.Game
                     { typeof(Common.Position), null },
                     { typeof(Player.Movement), null },
                     { typeof(Player.Player), null },
-                });
+                }));
 
             CultistPrefab = Prefab.Define(
                 "cultist",
-                new Dictionary<Type, ComponentProperties>()
+                new ComponentSet(new Dictionary<Type, ComponentProperties>()
                 {
                     { typeof(Common.CombatStats),
                         new ComponentProperties(new Dictionary<string, object>()
@@ -72,7 +72,7 @@ namespace Ninjathulhu.Game
                     { typeof(Common.Position), null },
                     { typeof(Common.WanderMovement), null },
                     { typeof(Monster.Cultist), null },
-                });
+                }));
         }
     }
 }

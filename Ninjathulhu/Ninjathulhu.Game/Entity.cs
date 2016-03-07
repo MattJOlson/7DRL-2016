@@ -11,9 +11,7 @@ namespace Ninjathulhu.Game
 
         public readonly EntityProperties Properties;
 
-        public Entity(
-            Dictionary<Type, ComponentProperties> prefabProperties,
-            Dictionary<Type, ComponentProperties> spawnProperties)
+        public Entity(ComponentSet prefabProperties, ComponentSet spawnProperties)
         {
             Components = new EntityComponents(this);
             Properties = new EntityProperties(prefabProperties, spawnProperties);
