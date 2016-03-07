@@ -5,6 +5,11 @@ namespace Ninjathulhu.Game
     public class ComponentProperties
     {
         public Dictionary<string, object> Values;
+
+        public ComponentProperties(Dictionary<string, object> values)
+        {
+            Values = values;
+        }
     }
 
     public class Component

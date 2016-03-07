@@ -35,6 +35,7 @@ namespace Ninjathulhu.Game
         {
             Prefab prefab = Definitions[id];
             Entity entity = new Entity();
+            entity.Properties.FromPrefab = prefab.Properties;
             entity.Properties.FromSpawn = spawnProperties;
 
             var newComponents = new List<Component>();

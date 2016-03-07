@@ -16,8 +16,28 @@ namespace Ninjathulhu.Game
             CurrentMap.Generate();
 
             // TODO: loading the current map should generate spawn calls
-            Prefab.Spawn("player", null);
-            Prefab.Spawn("cultist", null);
+            Prefab.Spawn(
+                "player",
+                new Dictionary<Type, ComponentProperties>()
+                {
+                    { typeof(Common.Position),
+                        new ComponentProperties(new Dictionary<string, object>()
+                        {
+                            { "position x", 10 },
+                            { "position y", 12 },
+                        }) },
+                });
+            Prefab.Spawn(
+                "cultist",
+                new Dictionary<Type, ComponentProperties>()
+                {
+                    { typeof(Common.Position),
+                        new ComponentProperties(new Dictionary<string, object>()
+                        {
+                            { "position x", 15 },
+                            { "position y", 20 },
+                        }) },
+                });
         }
 
         private void DefinePrefabs()
@@ -34,6 +54,11 @@ namespace Ninjathulhu.Game
                 },
                 new Dictionary<Type, ComponentProperties>()
                 {
+                    { typeof(Common.CombatStats),
+                        new ComponentProperties(new Dictionary<string, object>()
+                        {
+                            { "hit points", 20 },
+                        }) },
                 });
 
             Prefab.Define(
@@ -47,6 +72,11 @@ namespace Ninjathulhu.Game
                 },
                 new Dictionary<Type, ComponentProperties>()
                 {
+                    { typeof(Common.CombatStats),
+                        new ComponentProperties(new Dictionary<string, object>()
+                        {
+                            { "hit points", 5 },
+                        }) },
                 });
         }
     }

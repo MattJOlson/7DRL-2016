@@ -13,5 +13,14 @@ namespace Ninjathulhu.Game.Common
         {
             return Math.Abs(X - x) + Math.Abs(Y - y);
         }
+
+        public override void Start()
+        {
+            object x = Entity.Properties.Get<Position>("position x", 0);
+            if (x != null) { X = Convert.ToInt32(x);  }
+
+            object y = Entity.Properties.Get<Position>("position y", 0);
+            if (y != null) { Y = Convert.ToInt32(y); }
+        }
     }
 }
