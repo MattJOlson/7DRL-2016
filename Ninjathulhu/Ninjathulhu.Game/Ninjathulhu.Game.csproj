@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Demands, Version=0.0.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Demands.0.0.2.1\lib\net452\Demands.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,12 +44,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\CombatStats.cs" />
+    <Compile Include="Common\Inventory.cs" />
+    <Compile Include="Common\Position.cs" />
+    <Compile Include="Common\WanderMovement.cs" />
     <Compile Include="Component.cs" />
     <Compile Include="Entity.cs" />
+    <Compile Include="Monster\Cultist.cs" />
+    <Compile Include="Monster\Monster.cs" />
+    <Compile Include="Player\Movement.cs" />
+    <Compile Include="Player\Player.cs" />
     <Compile Include="Prefab.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sim.cs" />
     <Compile Include="Map.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

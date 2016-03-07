@@ -5,6 +5,11 @@ namespace Ninjathulhu.Game
     public class ComponentProperties
     {
         public Dictionary<string, object> Values;
+
+        public ComponentProperties(Dictionary<string, object> values)
+        {
+            Values = values;
+        }
     }
 
     public class Component
@@ -19,7 +24,7 @@ namespace Ninjathulhu.Game
 
         public virtual void Tick() {}
 
-        public Component GetSibling<TComponent>()
+        public TComponent GetSibling<TComponent>()
             where TComponent : Component
         {
             return Entity?.Components.Get<TComponent>();

@@ -33,6 +33,8 @@ namespace Ninjathulhu.Game
         public static Entity Spawn(Prefab prefab, Dictionary<Type, ComponentProperties> spawnProperties)
         {
             var entity = new Entity();
+            entity.Properties.FromPrefab = prefab.Properties;
+            entity.Properties.FromSpawn = spawnProperties;
 
             var newComponents = prefab.Components.Select(t => entity.Components.Attach(t));
 
