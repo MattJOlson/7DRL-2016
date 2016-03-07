@@ -6,7 +6,7 @@ namespace Ninjathulhu.Game.Common
     public class Position : Component
     {
         public static string PositionXPropertyName = "position x";
-        public static string PositionYPropertyName = "position x";
+        public static string PositionYPropertyName = "position y";
         public int X = 0;
         public int Y = 0;
 

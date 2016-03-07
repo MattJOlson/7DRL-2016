@@ -7,6 +7,9 @@ namespace Ninjathulhu.Game
     {
         public Map CurrentMap;
 
+        private Prefab PlayerPrefab;
+        private Prefab CultistPrefab;
+
         public Sim()
         {
             DefinePrefabs();
@@ -17,7 +20,7 @@ namespace Ninjathulhu.Game
 
             // TODO: loading the current map should generate spawn calls
             Prefab.Spawn(
-                "player",
+                PlayerPrefab,
                 new Dictionary<Type, ComponentProperties>()
                 {
                     { typeof(Common.Position),
@@ -28,7 +31,7 @@ namespace Ninjathulhu.Game
                         }) },
                 });
             Prefab.Spawn(
-                "cultist",
+                CultistPrefab,
                 new Dictionary<Type, ComponentProperties>()
                 {
                     { typeof(Common.Position),
@@ -42,9 +45,9 @@ namespace Ninjathulhu.Game
 
         private void DefinePrefabs()
         {
-            Prefab.Define(
+            PlayerPrefab = Prefab.Define(
                 "player",
-                new List<Type>()
+                new HashSet<Type>()
                 {
                     typeof(Common.CombatStats),
                     typeof(Common.Inventory),
@@ -61,9 +64,9 @@ namespace Ninjathulhu.Game
                         }) },
                 });
 
-            Prefab.Define(
+            CultistPrefab = Prefab.Define(
                 "cultist",
-                new List<Type>()
+                new HashSet<Type>()
                 {
                     typeof(Common.CombatStats),
                     typeof(Common.Position),
