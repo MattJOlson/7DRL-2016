@@ -14,10 +14,10 @@ namespace Ninjathulhu.Game
             _entity = entity;
         }
 
-        public Component Get<TComponent>()
+        public TComponent Get<TComponent>()
             where TComponent : Component
         {
-            return Get(typeof (TComponent));
+            return Get(typeof (TComponent)) as TComponent;
         }
 
         public Component Get(Type componentType)

@@ -10,7 +10,7 @@ namespace Ninjathulhu.Game.Monster
 
         public override void Start()
         {
-            Movement = GetSibling<WanderMovement>() as WanderMovement;
+            Movement = GetSibling<WanderMovement>();
             if (Movement == null)
             {
                 throw new Exception("cultist lacks movement component");

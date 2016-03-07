@@ -11,7 +11,7 @@ namespace Ninjathulhu.Game.Monster
 
         public override void Start()
         {
-            Position = GetSibling<Position>() as Position;
+            Position = GetSibling<Position>();
             if (Position == null)
             {
                 throw new Exception("monster lacks position component");

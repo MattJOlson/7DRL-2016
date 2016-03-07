@@ -12,7 +12,7 @@ namespace Ninjathulhu.Game.Player
 
         public override void Start()
         {
-            Position = GetSibling<Position>() as Position;
+            Position = GetSibling<Position>();
             if (Position == null)
             {
                 throw new Exception("player movement controller lacks position component");

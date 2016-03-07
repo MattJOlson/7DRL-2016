@@ -19,7 +19,7 @@ namespace Ninjathulhu.Game
 
         public virtual void Tick() {}
 
-        public Component GetSibling<TComponent>()
+        public TComponent GetSibling<TComponent>()
             where TComponent : Component
         {
             return Entity?.Components.Get<TComponent>();
