@@ -19,7 +19,7 @@ namespace Ninjathulhu.Game.Test
         public void attaching_a_component_to_an_entity_should_track_the_entity()
         {
             var comp = new SomeComponent();
-            var entity = new Entity();
+            var entity = new Entity(null, null);
 
             comp.AttachTo(entity);
 
@@ -30,7 +30,7 @@ namespace Ninjathulhu.Game.Test
         public void removing_a_component_from_an_entity_should_reset_the_tracked_entity_to_null()
         {
             var comp = new SomeComponent();
-            var entity = new Entity();
+            var entity = new Entity(null, null);
 
             comp.AttachTo(entity);
             comp.RemoveFrom(entity);
@@ -43,7 +43,7 @@ namespace Ninjathulhu.Game.Test
         {
             var foo = new SomeComponent();
             var bar = new SomeComponent();
-            var entity = new Entity();
+            var entity = new Entity(null, null);
 
             foo.AttachTo(entity);
             bar.AttachTo(entity);
@@ -54,7 +54,7 @@ namespace Ninjathulhu.Game.Test
         [Test]
         public void getting_a_sibling_that_does_not_exist_returns_null()
         {
-            var entity = new Entity();
+            var entity = new Entity(null, null);
             var foo = entity.Components.Attach<SomeComponent>();
 
             foo.AttachTo(entity);
@@ -64,7 +64,7 @@ namespace Ninjathulhu.Game.Test
         [Test]
         public void getting_a_sibling_works()
         {
-            var entity = new Entity();
+            var entity = new Entity(null, null);
             var foo = entity.Components.Attach<SomeComponent>();
             var bar = entity.Components.Attach<Component>();
 

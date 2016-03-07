@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Ninjathulhu.Game
 {
@@ -9,6 +10,40 @@ namespace Ninjathulhu.Game
         public ComponentProperties(Dictionary<string, object> values)
         {
             Values = values;
+        }
+    }
+
+    public class ComponentSet
+    {
+        private readonly Dictionary<Type, ComponentProperties> Members;
+
+        public ComponentSet(Dictionary<Type, ComponentProperties> members)
+        {
+            Members = members;
+        }
+
+        public IEnumerable<Type> Types
+        {
+            get
+            {
+                return Members.Keys;
+            }
+        }
+
+        public object GetProperty(Type componentType, string propertyName)
+        {
+            if (!Members.ContainsKey(componentType))
+            {
+                return null;
+            }
+
+            var component = Members[componentType];
+            if (component.Values.ContainsKey(propertyName))
+            {
+                return component.Values[propertyName];
+            }
+
+            return null;
         }
     }
 

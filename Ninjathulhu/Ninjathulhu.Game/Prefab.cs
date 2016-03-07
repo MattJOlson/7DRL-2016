@@ -12,31 +12,25 @@ namespace Ninjathulhu.Game
             private set;
         }
 
-        public HashSet<Type> Components;
-
-        public Dictionary<Type, ComponentProperties> Properties;
+        public ComponentSet Components;
 
         protected Prefab(string id)
         {
             ID = id;
         }
 
-        public static Prefab Define(string id, HashSet<Type> components, Dictionary<Type, ComponentProperties> properties)
+        public static Prefab Define(string id, ComponentSet components)
         {
             var prefab = new Prefab(id);
             prefab.Components = components;
-            prefab.Properties = properties;
-
             return prefab;
         }
 
-        public static Entity Spawn(Prefab prefab, Dictionary<Type, ComponentProperties> spawnProperties)
+        public static Entity Spawn(Prefab prefab, ComponentSet spawnProperties)
         {
-            var entity = new Entity();
-            entity.Properties.FromPrefab = prefab.Properties;
-            entity.Properties.FromSpawn = spawnProperties;
+            var entity = new Entity(prefab.Components, spawnProperties);
 
-            var newComponents = prefab.Components.Select(t => entity.Components.Attach(t));
+            var newComponents = prefab.Components.Types.Select(t => entity.Components.Attach(t));
 
             foreach (var component in newComponents) component.Start();
 
