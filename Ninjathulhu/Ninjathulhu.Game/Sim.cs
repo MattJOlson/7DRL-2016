@@ -23,8 +23,8 @@ namespace Ninjathulhu.Game
                     { typeof(Common.Position),
                         new ComponentProperties(new Dictionary<string, object>()
                         {
-                            { "position x", 10 },
-                            { "position y", 12 },
+                            { Common.Position.PositionXPropertyName, 10 },
+                            { Common.Position.PositionYPropertyName, 12 },
                         }) },
                 });
             Prefab.Spawn(
@@ -34,8 +34,8 @@ namespace Ninjathulhu.Game
                     { typeof(Common.Position),
                         new ComponentProperties(new Dictionary<string, object>()
                         {
-                            { "position x", 15 },
-                            { "position y", 20 },
+                            { Common.Position.PositionXPropertyName, 15 },
+                            { Common.Position.PositionYPropertyName, 20 },
                         }) },
                 });
         }
@@ -57,7 +57,7 @@ namespace Ninjathulhu.Game
                     { typeof(Common.CombatStats),
                         new ComponentProperties(new Dictionary<string, object>()
                         {
-                            { "hit points", 20 },
+                            { Common.CombatStats.HitPointsPropertyName, 20 },
                         }) },
                 });
 
@@ -75,7 +75,7 @@ namespace Ninjathulhu.Game
                     { typeof(Common.CombatStats),
                         new ComponentProperties(new Dictionary<string, object>()
                         {
-                            { "hit points", 5 },
+                            { Common.CombatStats.HitPointsPropertyName, 5 },
                         }) },
                 });
         }

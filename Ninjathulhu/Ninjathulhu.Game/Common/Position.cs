@@ -5,6 +5,8 @@ namespace Ninjathulhu.Game.Common
     // An entity with this component has a position in the game world.
     public class Position : Component
     {
+        public static string PositionXPropertyName = "position x";
+        public static string PositionYPropertyName = "position x";
         public int X = 0;
         public int Y = 0;
 
@@ -16,10 +18,10 @@ namespace Ninjathulhu.Game.Common
 
         public override void Start()
         {
-            object x = Entity.Properties.Get<Position>("position x", 0);
+            object x = Entity.Properties.Get<Position>(PositionXPropertyName, 0);
             if (x != null) { X = Convert.ToInt32(x);  }
 
-            object y = Entity.Properties.Get<Position>("position y", 0);
+            object y = Entity.Properties.Get<Position>(PositionYPropertyName, 0);
             if (y != null) { Y = Convert.ToInt32(y); }
         }
     }
