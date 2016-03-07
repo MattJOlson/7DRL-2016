@@ -5,9 +5,17 @@ namespace Ninjathulhu.Game
 {
     public class EntityProperties
     {
-        public Dictionary<Type, ComponentProperties> FromPrefab = new Dictionary<Type, ComponentProperties>();
+        public readonly Dictionary<Type, ComponentProperties> FromPrefab;
 
-        public Dictionary<Type, ComponentProperties> FromSpawn = new Dictionary<Type, ComponentProperties>();
+        public readonly Dictionary<Type, ComponentProperties> FromSpawn;
+
+        public EntityProperties(
+            Dictionary<Type, ComponentProperties> prefabProperties,
+            Dictionary<Type, ComponentProperties> spawnProperties)
+        {
+            FromPrefab = prefabProperties;
+            FromSpawn = spawnProperties;
+        }
 
         private static object Get(Dictionary<Type, ComponentProperties> properties, Type componentType, string propertyName)
         {

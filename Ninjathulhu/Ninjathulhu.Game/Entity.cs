@@ -7,14 +7,16 @@ namespace Ninjathulhu.Game
     {
         public Entity Parent;
 
-        public EntityComponents Components;
+        public readonly EntityComponents Components;
 
-        public EntityProperties Properties;
+        public readonly EntityProperties Properties;
 
-        public Entity()
+        public Entity(
+            Dictionary<Type, ComponentProperties> prefabProperties,
+            Dictionary<Type, ComponentProperties> spawnProperties)
         {
             Components = new EntityComponents(this);
-            Properties = new EntityProperties();
+            Properties = new EntityProperties(prefabProperties, spawnProperties);
         }
     }
 
