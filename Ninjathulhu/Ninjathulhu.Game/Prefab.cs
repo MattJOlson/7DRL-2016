@@ -23,9 +23,10 @@ namespace Ninjathulhu.Game
 
         public static Prefab Define(string id, HashSet<Type> components, Dictionary<Type, ComponentProperties> properties)
         {
-            var prefab = new Prefab(id);
-            prefab.Components = components;
-            prefab.Properties = properties;
+            var prefab = new Prefab(id) {
+                Components = components,
+                Properties = properties
+            };
 
             return prefab;
         }
