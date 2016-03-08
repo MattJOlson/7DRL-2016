@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Ninjathulhu.Game;
+using Ninjathulhu.Game.World;
 
 namespace Ninjathulhu
 {
@@ -9,12 +10,12 @@ namespace Ninjathulhu
     {
         static Dictionary<MapCell.CellType, char> MapCharSet = new Dictionary<MapCell.CellType, char>()
         {
-            { MapCell.CellType.EMPTY, '.' },
+            { MapCell.CellType.EMPTY, ' ' },
             { MapCell.CellType.FLOOR, '.' },
-            { MapCell.CellType.WALL, '#' },
+            { MapCell.CellType.WALL, '|' },
         };
 
-        static void RenderMap(Game.Map currentMap)
+        static void RenderMap(Map currentMap)
         {
             Console.SetWindowSize(currentMap.Width + 1, currentMap.Height + 1);
             Console.SetCursorPosition(0, 0);
