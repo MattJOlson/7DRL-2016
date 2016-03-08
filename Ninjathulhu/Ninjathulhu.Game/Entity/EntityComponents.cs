@@ -14,15 +14,15 @@ namespace Ninjathulhu.Game
             _entity = entity;
         }
 
-        public Component Get<TComponent>()
+        public TComponent Get<TComponent>()
             where TComponent : Component
         {
-            return Get(typeof (TComponent));
+            return Get(typeof(TComponent)) as TComponent;
         }
 
         public Component Get(Type componentType)
         {
-            if(_components.ContainsKey(componentType))
+            if (_components.ContainsKey(componentType))
                 return _components[componentType];
             return null;
         }
@@ -30,7 +30,7 @@ namespace Ninjathulhu.Game
         public Component Attach<TComponent>()
             where TComponent : Component, new()
         {
-            return Attach(typeof (TComponent));
+            return Attach(typeof(TComponent));
         }
 
         public Component Attach(Type type)
@@ -49,7 +49,7 @@ namespace Ninjathulhu.Game
         public bool Remove<TComponent>()
             where TComponent : Component
         {
-            return Remove(typeof (TComponent));
+            return Remove(typeof(TComponent));
         }
 
         public bool Remove(Type componentType)
@@ -60,36 +60,6 @@ namespace Ninjathulhu.Game
             var component = _components[componentType];
             component.RemoveFrom(_entity);
             return _components.Remove(componentType);
-        }
-    }
-
-    public class EntityProperties
-    {
-        public Dictionary<Type, ComponentProperties> FromPrefab = new Dictionary<Type, ComponentProperties>();
-
-        public Dictionary<Type, ComponentProperties> FromSpawn = new Dictionary<Type, ComponentProperties>();
-    }
-
-    public class Entity
-    {
-        public Entity Parent;
-
-        public EntityComponents Components;
-
-        public EntityProperties Properties;
-
-        public Entity()
-        {
-            Components = new EntityComponents(this);
-            Properties = new EntityProperties();
-        }
-    }
-
-    internal static class TypeExtensions
-    {
-        public static Component MaybeComponent(this Type type)
-        {
-            return Activator.CreateInstance(type) as Component;
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Ninjathulhu.Game.Test
         [SetUp]
         public void SetUp()
         {
-            _entity = new Entity();
+            _entity = new Entity(null, null);
         }
 
         [Test]
@@ -53,7 +53,7 @@ namespace Ninjathulhu.Game.Test
         [Test]
         public void getting_a_component_type_that_has_not_been_registered_returns_null()
         {
-            var entity = new Entity();
+            var entity = new Entity(null, null);
             entity.Components.Attach<Component>();
 
             entity.Components.Get<SomeComponent>().Should().BeNull();
@@ -62,7 +62,7 @@ namespace Ninjathulhu.Game.Test
         [Test]
         public void removing_a_registered_component_works()
         {
-            var entity = new Entity();
+            var entity = new Entity(null, null);
             var component = entity.Components.Attach<SomeComponent>() as SomeComponent;
             entity.Components.Remove<SomeComponent>();
 
@@ -73,7 +73,7 @@ namespace Ninjathulhu.Game.Test
         [Test]
         public void removing_a_component_that_has_not_been_registered_does_not_throw()
         {
-            var entity = new Entity();
+            var entity = new Entity(null, null);
 
             Action act = () => entity.Components.Remove<SomeComponent>();
 

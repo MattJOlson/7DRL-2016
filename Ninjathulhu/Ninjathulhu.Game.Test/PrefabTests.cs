@@ -19,7 +19,7 @@ namespace Ninjathulhu.Game.Test
         [Test]
         public void defining_a_prefab_preserves_id()
         {
-            var prefab = Prefab.Define("Foo", null, null);
+            var prefab = Prefab.Define("Foo", null);
 
             prefab.ID.Should().Be("Foo");
         }
@@ -27,23 +27,25 @@ namespace Ninjathulhu.Game.Test
         [Test]
         public void defining_a_prefab_preserves_components()
         {
-            var components = new HashSet<Type> {
-                typeof (Component),
-                typeof (SomeComponent)
-            };
+            var components = new ComponentSet(
+                new Dictionary <Type, ComponentProperties> {
+                   { typeof(Component), null },
+                   { typeof(SomeComponent), null }
+                });
 
-            var prefab = Prefab.Define("Foo", components, null);
-            prefab.Components.Should().BeEquivalentTo(components);
+            var prefab = Prefab.Define("Foo", components);
+            prefab.Components.Types.Should().BeEquivalentTo(components.Types);
         }
 
         [Test]
         public void spawning_an_entity_from_a_prefab_attaches_components()
         {
-            var components = new HashSet<Type> {
-                typeof (Component),
-                typeof (SomeComponent)
-            };
-            var prefab = Prefab.Define("Foo", components, null);
+            var components = new ComponentSet(
+                new Dictionary <Type, ComponentProperties> {
+                    { typeof(Component), null },
+                    { typeof(SomeComponent), null }
+                });
+            var prefab = Prefab.Define("Foo", components);
 
             var entity = Prefab.Spawn(prefab, null);
 
