@@ -126,40 +126,11 @@ namespace Ninjathulhu.Game.World
                 return;
             }
 
-            Set(new Rectangle(
-                    room.Extents.Left,
-                    room.Extents.Top,
-                    room.Extents.Width-1,
-                    1),
-                MapCell.CellType.WALL);
-
-            Set(new Rectangle(
-                    room.Extents.Left,
-                    room.Extents.Bottom-1,
-                    room.Extents.Width-1,
-                    1),
-                MapCell.CellType.WALL);
-
-            Set(new Rectangle(
-                    room.Extents.Left,
-                    room.Extents.Top,
-                    1,
-                    room.Extents.Height-1),
-                MapCell.CellType.WALL);
-
-            Set(new Rectangle(
-                    room.Extents.Right-1,
-                    room.Extents.Top,
-                    1,
-                    room.Extents.Height),
-                MapCell.CellType.WALL);
-
-            Set(new Rectangle(
-                    room.Extents.Left+1,
-                    room.Extents.Top+1,
-                    room.Extents.Width-2,
-                    room.Extents.Height-2),
-                MapCell.CellType.FLOOR);
+            Set(room.NorthWallExtents, MapCell.CellType.WALL);
+            Set(room.SouthWallExtents, MapCell.CellType.WALL);
+            Set(room.EastWallExtents, MapCell.CellType.WALL);
+            Set(room.WestWallExtents, MapCell.CellType.WALL);
+            Set(room.InteriorExtents, MapCell.CellType.FLOOR);
         }
 
         public void AddCorridor(Corridor corridor)
