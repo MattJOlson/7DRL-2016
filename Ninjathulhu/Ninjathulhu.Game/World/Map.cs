@@ -10,6 +10,8 @@ namespace Ninjathulhu.Game.World
             EMPTY,
             FLOOR,
             WALL,
+            DOOR,
+            CORRIDOR,
         }
 
         public CellType Type = CellType.EMPTY;
@@ -29,6 +31,14 @@ namespace Ninjathulhu.Game.World
     {
         public const int DefaultHeight = 20;
         public const int DefaultWidth = 80;
+
+        public enum Direction
+        {
+            NORTH,
+            SOUTH,
+            EAST,
+            WEST
+        }
 
         public int Height
         {
@@ -150,6 +160,36 @@ namespace Ninjathulhu.Game.World
                     room.Extents.Width-2,
                     room.Extents.Height-2),
                 MapCell.CellType.FLOOR);
+        }
+
+        public void AddCorridor(Corridor corridor)
+        {
+            Size size = new Size();
+
+            switch (corridor.Direction)
+            {
+                case Direction.NORTH:
+                    size = new Size(1, -corridor.Length);
+                    break;
+
+                case Direction.SOUTH:
+                    size = new Size(1, corridor.Length);
+                    break;
+
+                case Direction.EAST:
+                    size = new Size(corridor.Length, 1);
+                    break;
+
+                case Direction.WEST:
+                    size = new Size(-corridor.Length, 1);
+                    break;
+
+                default:
+                    // TODO: freak out here
+                    break;
+            }
+
+            Set(new Rectangle(corridor.Start, size), MapCell.CellType.CORRIDOR);
         }
     }
 }

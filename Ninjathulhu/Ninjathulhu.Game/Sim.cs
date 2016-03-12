@@ -20,9 +20,15 @@ namespace Ninjathulhu.Game
             // TODO: some kind of "world manager" should determine the current map
             CurrentMap = new Map();
             CurrentMap.AddRoom(new Room()
-                {
-                    Extents = new Rectangle(3, 3, 8, 6)
-                }); // test code
+            {
+                Extents = new Rectangle(3, 3, 8, 6),
+            });
+            CurrentMap.AddCorridor(new Corridor()
+            {
+                Start = new Point(12, 8),
+                Length = 5,
+                Direction = Map.Direction.NORTH,
+            });
 
             // TODO: loading the current map should generate spawn calls
             Prefab.Spawn(

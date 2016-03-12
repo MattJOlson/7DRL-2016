@@ -13,6 +13,8 @@ namespace Ninjathulhu
             { MapCell.CellType.EMPTY, ' ' },
             { MapCell.CellType.FLOOR, '.' },
             { MapCell.CellType.WALL, '|' },
+            { MapCell.CellType.DOOR, '#' },
+            { MapCell.CellType.CORRIDOR, '#' },
         };
 
         static void RenderMap(Map currentMap)
