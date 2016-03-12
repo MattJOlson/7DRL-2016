@@ -27,7 +27,7 @@ namespace Ninjathulhu.Game
             {
                 Start = new Point(12, 8),
                 Length = 5,
-                Direction = Map.Direction.NORTH,
+                Orientation = CorridorOrientation.HORIZONTAL,
             });
 
             // TODO: loading the current map should generate spawn calls

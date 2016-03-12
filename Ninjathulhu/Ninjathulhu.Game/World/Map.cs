@@ -137,22 +137,14 @@ namespace Ninjathulhu.Game.World
         {
             Size size = new Size();
 
-            switch (corridor.Direction)
+            switch (corridor.Orientation)
             {
-                case Direction.NORTH:
-                    size = new Size(1, -corridor.Length);
-                    break;
-
-                case Direction.SOUTH:
-                    size = new Size(1, corridor.Length);
-                    break;
-
-                case Direction.EAST:
+                case CorridorOrientation.HORIZONTAL:
                     size = new Size(corridor.Length, 1);
                     break;
 
-                case Direction.WEST:
-                    size = new Size(-corridor.Length, 1);
+                case CorridorOrientation.VERTICAL:
+                    size = new Size(1, corridor.Length);
                     break;
 
                 default:
