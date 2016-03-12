@@ -119,14 +119,14 @@ namespace Ninjathulhu.Game.World
             Set(new Rectangle(
                     room.Extents.Left,
                     room.Extents.Top,
-                    room.Extents.Width,
+                    room.Extents.Width-1,
                     1),
                 MapCell.CellType.WALL);
 
             Set(new Rectangle(
                     room.Extents.Left,
-                    room.Extents.Bottom,
-                    room.Extents.Width,
+                    room.Extents.Bottom-1,
+                    room.Extents.Width-1,
                     1),
                 MapCell.CellType.WALL);
 
@@ -134,11 +134,11 @@ namespace Ninjathulhu.Game.World
                     room.Extents.Left,
                     room.Extents.Top,
                     1,
-                    room.Extents.Height),
+                    room.Extents.Height-1),
                 MapCell.CellType.WALL);
 
             Set(new Rectangle(
-                    room.Extents.Right,
+                    room.Extents.Right-1,
                     room.Extents.Top,
                     1,
                     room.Extents.Height),
@@ -146,7 +146,7 @@ namespace Ninjathulhu.Game.World
 
             Set(new Rectangle(
                     room.Extents.Left+1,
-                    room.Extents.Top-1,
+                    room.Extents.Top+1,
                     room.Extents.Width-2,
                     room.Extents.Height-2),
                 MapCell.CellType.FLOOR);
