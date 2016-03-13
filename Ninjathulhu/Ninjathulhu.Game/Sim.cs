@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing; // for Rectangle
+
+using Ninjathulhu.Game.World;
 
 namespace Ninjathulhu.Game
 {
@@ -16,7 +19,16 @@ namespace Ninjathulhu.Game
 
             // TODO: some kind of "world manager" should determine the current map
             CurrentMap = new Map();
-            CurrentMap.Generate();
+            CurrentMap.AddRoom(new Room()
+            {
+                Extents = new Rectangle(3, 3, 8, 6),
+            });
+            CurrentMap.AddCorridor(new Corridor()
+            {
+                Start = new Point(12, 8),
+                Length = 5,
+                Orientation = CorridorOrientation.HORIZONTAL,
+            });
 
             // TODO: loading the current map should generate spawn calls
             Prefab.Spawn(
